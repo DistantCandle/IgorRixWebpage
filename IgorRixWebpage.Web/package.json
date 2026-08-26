@@ -1,0 +1,27 @@
+{
+  "name": "igor-rix-webpage-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "sass": "sass ./wwwroot/sass/style.scss ./wwwroot/css/style.css",
+    "sass:watch": "sass --watch ./wwwroot/sass/style.scss:./wwwroot/css/style.css",
+    "build": "npm run sass",
+    "minify": "postcss ./wwwroot/css/*.css -u autoprefixer cssnano -r --no-map",
+    "build:prod": "npm run sass && npm run minify"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.1.0",
+    "postcss-cli": "^11.0.1",
+    "sass": "^1.103.1"
+  },
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "allowScripts": {
+    "@parcel/watcher@2.6.0": true
+  }
+}

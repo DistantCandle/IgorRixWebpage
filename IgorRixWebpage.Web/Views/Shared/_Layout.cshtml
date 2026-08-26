@@ -1,0 +1,72 @@
+@model IgorRixWebpage.Web.Models.ViewModels.BasePageViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body>
+    <header>
+        @{
+            var header_blocks = Model?.PageContentCompositionModel?.Blocks;
+            var header_blockViewMap = new Dictionary<Type, string>
+                {
+                    // Add new block types here
+                    { typeof(IgorRixWebpage.Web.Models.NestedElements.HeaderComponent), "~/Views/Partials/Blocks/headerComponent.cshtml" },
+                };
+
+                if (header_blocks != null && header_blocks.Any())
+                {
+                    foreach (var block in header_blocks)
+                    {
+                        var blockType = block.GetType();
+
+                        if (header_blockViewMap.TryGetValue(blockType, out var viewPath))
+                        {
+                            @await Html.PartialAsync(viewPath, block)
+                        }
+                    }
+                }
+            @RenderBody()
+        }
+    </header>
+    <main role='main'>
+        
+        @* @{var blocks = Model?.PageContentCompositionModel?.Blocks;
+          var blockViewMap = new Dictionary<Type, string>
+            {
+                // Add new block types here
+                { typeof(IgorRixWebpage.Web.Models.NestedElements.HeaderComponent), "~/Views/Partials/Blocks/headerComponent.cshtml" },
+                @* { typeof(IgorRixWebpage.Web.Models.NestedElements.AccordionContainer), "~/Views/Partials/Blocks/accordionContainer.cshtml" },
+                { typeof(IgorRixWebpage.Web.Models.NestedElements.ArticleInformationContainer), "~/Views/Partials/Blocks/articleInformationContainer.cshtml" },
+                { typeof(IgorRixWebpage.Web.Models.NestedElements.HomeArticles), "~/Views/Partials/Blocks/homeArticles.cshtml" },
+            };
+
+            if (blocks != null && blocks.Any())
+            {
+                foreach (var block in blocks)
+                {
+                    var blockType = block.GetType();
+
+                    if (blockViewMap.TryGetValue(blockType, out var viewPath))
+                    {
+                        @await Html.PartialAsync(viewPath, block)
+                    }
+                }
+            }
+        
+
+        @RenderBody()
+        }  *@
+    </main>
+    <footer>
+
+    </footer>
+</body>
