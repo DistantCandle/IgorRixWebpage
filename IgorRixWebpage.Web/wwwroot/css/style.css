@@ -1,3 +1,183 @@
+  /* ========================================================
+   BRAND VARIABLES & THEMING
+   ======================================================== */
+/* Theme adjustments */
+/* ========================================================
+   GLOBAL STYLES
+   ======================================================== */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+}
 
+/* ========================================================
+   HEADER & NAVIGATION LAYOUT
+   ======================================================== */
+header {
+  position: -webkit-sticky;
+  /* Safari support */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  /* Keeps navbar layered over page content */
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  /* Subtle depth shadow */
+}
+
+.navbar {
+  width: 100%;
+  padding: 15px 0;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* Matches layout style: elements left-aligned */
+  align-items: center;
+  gap: 50px;
+  /* Physical spacing gap between logo and links block */
+  /* Nested Mobile Media Query Breakpoint */
+}
+@media screen and (max-width: 820px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+  }
+}
+
+/* Framework fallback selector */
+.nav-logo {
+  color: var(--logo-blue) !important;
+  /* Kept native CSS fallback variable if driven by backend */
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.nav-links {
+  list-style: none;
+  /* Strips standard bullet points */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  /* Arranges the list item bullets horizontally */
+  align-items: center;
+  gap: 25px;
+  /* Spacing margin between individual nav items */
+}
+.nav-links li {
+  white-space: nowrap;
+  /* Prevents layout fracturing like "About Us" breaking onto two lines */
+}
+.nav-links li a {
+  color: #000000;
+  /* Fixed from broken variable reference to match your theme definition */
+  text-decoration: none;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: opacity 0.2s ease;
+}
+.nav-links li a:hover {
+  opacity: 0.8;
+}
+.nav-links {
+  /* Nested Mobile Layout Adjustment */
+}
+@media screen and (max-width: 820px) {
+  .nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .nav-links li a {
+    font-size: 16px;
+  }
+}
+
+/* ========================================================
+   PURE CSS REPLICA TEXT LOGO
+   ======================================================== */
+.nav-logo-container {
+  text-decoration: none !important;
+  display: inline-block;
+  padding: 5px;
+}
+
+.logo-fragment-box {
+  position: relative;
+  padding: 10px 25px 12px 18px;
+  /* 1. Left Vertical Line Fragment */
+}
+.logo-fragment-box::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background-color: #003fa8;
+}
+.logo-fragment-box {
+  /* 2. Short Top Horizontal Line Fragment */
+}
+.logo-fragment-box::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 5px;
+  width: 25%;
+  background-color: #003fa8;
+}
+
+.logo-main-text {
+  color: #003fa8;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 34px;
+  font-weight: bold;
+  line-height: 0.92;
+  letter-spacing: -0.5px;
+}
+
+.serif-cap {
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  font-size: 38px;
+  /* Slightly scaled up to balance vertical alignment */
+  display: inline-block;
+}
+
+.logo-subtext-line {
+  position: absolute;
+  bottom: -9px;
+  /* Vertically centers text over invisible bottom boundary line */
+  right: 0;
+  color: #003fa8;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+  /* 3. The solid horizontal line trailing directly out from the left of "no barriers" */
+}
+.logo-subtext-line::before {
+  content: "";
+  position: absolute;
+  left: -120%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 115%;
+  height: 5px;
+  background-color: #003fa8;
+}
 
 /*# sourceMappingURL=style.css.map */

@@ -1,1 +1,24 @@
 @use "components/pageHeader.scss";
+@use "components/pageFooter.scss";
+
+
+/* ========================================================
+   BRAND VARIABLES & THEMING
+   ======================================================== */
+$brand-blue-dark: #003399;
+$brand-blue-vibrant: #1143b4;
+$brand-text-dark: #003fa8;
+$logo-blue-brand: #003fa8;
+
+/* Theme adjustments */
+$bg-white: #ffffff;
+$nav-black: #000000;
+
+/* ========================================================
+   GLOBAL STYLES
+   ======================================================== */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+}
