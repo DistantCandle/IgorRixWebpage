@@ -17,8 +17,24 @@ $nav-black: #000000;
 /* ========================================================
    GLOBAL STYLES
    ======================================================== */
+html,
 body {
     margin: 0;
+    padding: 0;
+    height: 100%;
+
     font-family: Arial, Helvetica, sans-serif;
     background-color: #ffffff;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh; // 'dvh' handles mobile browser address bars perfectly
+}
+
+main,
+.main-content,
+.container {
+    flex: 1;
 }
