@@ -65,11 +65,11 @@ The following websites are provided as examples of the preferred general design 
 {"fallbackMarkdown":"Disability Access Consultants
 ","reference":{"matched_text":"","prefix":null,"start_idx":2422,"end_idx":2505,"safe_urls":[],"refs":[],"alt":"Disability Access Consultants
 ","prompt_text":"Disability Access Consultants
-","type":"url","layout":null,"logo":null,"item":{"title":"Disability Access Consultants","url":"https://www.disabilityaccessconsultants.com.au/?utm_source=chatgpt.com","attribution":"disabilityaccessconsultants.com.au","pub_date":null,"snippet":null,"attribution_segments":null,"supporting_websites":null,"refs":[],"hue":null,"attributions":null},"title":"Disability Access Consultants"},"showLoginRequiredCard":false}
+","type":"url","layout":null,"logo":null,"item":{"title":"Disability Access Consultants","url":"https://www.disabilityaccessconsultants.com.au/","attribution":"disabilityaccessconsultants.com.au","pub_date":null,"snippet":null,"attribution_segments":null,"supporting_websites":null,"refs":[],"hue":null,"attributions":null},"title":"Disability Access Consultants"},"showLoginRequiredCard":false}
 {"fallbackMarkdown":"ASNPL
 ","reference":{"matched_text":"","prefix":null,"start_idx":2508,"end_idx":2541,"safe_urls":[],"refs":[],"alt":"ASNPL
 ","prompt_text":"ASNPL
-","type":"url","layout":null,"logo":null,"item":{"title":"ASNPL","url":"https://asnpl.com.au/?utm_source=chatgpt.com","attribution":"asnpl.com.au","pub_date":null,"snippet":null,"attribution_segments":null,"supporting_websites":null,"refs":[],"hue":null,"attributions":null},"title":"ASNPL"},"showLoginRequiredCard":false}
+","type":"url","layout":null,"logo":null,"item":{"title":"ASNPL","url":"https://asnpl.com.au/","attribution":"asnpl.com.au","pub_date":null,"snippet":null,"attribution_segments":null,"supporting_websites":null,"refs":[],"hue":null,"attributions":null},"title":"ASNPL"},"showLoginRequiredCard":false}
 
 These websites are intended as visual and structural references only. Their drop-down/navigation elements are excluded from the preferred design reference.
 

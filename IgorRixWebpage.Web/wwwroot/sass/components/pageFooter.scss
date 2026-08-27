@@ -1,25 +1,158 @@
+/* ========================================================
+   FOOTER DESIGN SYSTEM
+   ======================================================== */
+$footer-bg-dark: #111827;       // Deep dark slate for layout distinction
+$footer-bg-bottom: #0b0f19;     // Darker sub-bar tone for copyright block
+$footer-text-white: #ffffff;
+$footer-text-muted: #9ca3af;    // Soft gray text variable for headings and meta
+$footer-accent-blue: #38bdf8;   // Vibrant electric blue accent for link hover states
+
 .footer {
     width: 100%;
-    background-color: #f8f9fa;
-    padding: 20px 0;
-    text-align: center;
-    margin-top: auto; // Core trick: pushes footer to the absolute bottom if content is short
+    background-color: $footer-bg-dark;
+    padding: 40px 0 0 0; /* Keeps bottom padding zero to lock metadata bar to edge */
+    margin-top: auto; /* Core trick: pushes footer to the absolute bottom if content is short */
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-    &-links {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 10px 0;
-        display: flex;
-        justify-content: center;
-        gap: 15px;
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 30px 20px;
+    
+    /* Horizontal Split Control */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
 
+    @media screen and (max-width: 650px) {
+        flex-direction: column;
+        gap: 30px;
+        align-items: flex-start; /* Keeps alignment clean left on mobile */
+    }
+}
+
+/* Global utility headings inside footer blocks */
+.footer-heading {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $footer-text-muted;
+    margin: 0 0 16px 0;
+    font-weight: bold;
+}
+
+/* --- Left Side: Vertical Navbar Layout --- */
+.footer-nav-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-vertical-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Perfect stacked line reading gaps */
+
+    li {
         a {
+            color: $footer-text-white;
             text-decoration: none;
-            color: #007bff;
-            
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+
             &:hover {
+                color: $footer-accent-blue;
                 text-decoration: underline;
             }
         }
+    }
+}
+
+/* --- Right Side: Anchored Contact Widgets --- */
+.footer-contact-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Hard right anchor on desktop screen formats */
+
+    @media screen and (max-width: 650px) {
+        align-items: flex-start; /* Snaps safely back to left when columns collapse */
+    }
+
+    .footer-personnel {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-bottom: 14px;
+
+        @media screen and (max-width: 650px) {
+            align-items: flex-start;
+        }
+    }
+
+    .footer-name {
+        color: $footer-text-white;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .footer-title {
+        color: $footer-text-muted;
+        font-size: 12px;
+        margin-top: 2px;
+    }
+}
+
+.footer-methods {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+
+    @media screen and (max-width: 650px) {
+        align-items: flex-start;
+    }
+}
+
+.footer-method-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    .method-prefix {
+        color: $footer-accent-blue;
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .method-link {
+        color: $footer-text-white;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+
+        &:hover {
+            color: $footer-accent-blue;
+            text-decoration: underline;
+        }
+    }
+}
+
+/* --- Bottom Copyright Track --- */
+.footer-bottom-bar {
+    width: 100%;
+    background-color: $footer-bg-bottom;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+
+    p {
+        margin: 0;
+        color: $footer-text-muted;
+        font-size: 13px;
     }
 }

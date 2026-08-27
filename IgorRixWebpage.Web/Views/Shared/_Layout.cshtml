@@ -16,36 +16,60 @@
 </head>
 
 <body>
-    <header>
-        <!--navbar start-->
-        <nav class="navbar">
-            <div class="nav-container">
+    <header class="site-header">
+        <div class="header-main-grid">
+
+            <!-- Left Node: Logo Block Alignment Base -->
+            <div class="header-left-node">
                 <a class="nav-logo-container" href="@Url.Content("~/")">
                     <div class="logo-fragment-box">
                         <div class="logo-main-text">
-                            <div class="logo-row-1">
-                                <span class="Roboto Slab">I</span>nclusive
-                            </div>
-                            <div class="logo-row-2">
-                                Access
-                            </div>
+                            <span class="Roboto Slab">I</span>nclusive
+                            <div class="logo-row-2">Access</div>
                         </div>
                         <div class="logo-subtext-line">no barriers</div>
                     </div>
                 </a>
+            </div>
+
+            <!-- Center Node: Profile Info Axis -->
+            <div class="header-center-node">
+                <h1 class="business-profile-title">Business Profile & Services</h1>
+                <p class="business-tagline">Just Access. Inclusion. Empowerment.</p>
+            </div>
+
+            <!-- Right Node: Contact Matrix Base Alignment -->
+            <div class="header-right-node">
+                @* <div class="personnel-block">
+                    <span class="contact-name">Igor Rix</span>
+                    <span class="contact-title">Director | Universal Access Consultant</span>
+                </div> *@
+
+                <div class="contact-methods">
+                    <!-- Telephone link structure -->
+                    <div class="phone-display">
+                        <span class="phone-prefix">P:</span>
+                        <a href="tel:0837030707" class="phone-number">083 703 0707</a>
+                    </div>
+
+                    <!-- Email contact structure -->
+                    <div class="email-display">
+                        <span class="email-prefix">E:</span>
+                        <a href="mailto:igor@inclusive-access.co.za"
+                           class="email-address">igor@inclusive-access.co.za</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Secondary Navigation Strip -->
+        <nav class="navbar">
+            <div class="nav-container">
                 <ul class="nav-links">
                     <li><a href="@Url.Content("~/")">Home</a></li>
                     <li><a href="@Url.Content("~/AboutUs")">About Us</a></li>
                     <li><a href="@Url.Content("~/Services")">Services</a></li>
-                    <li><a href="@Url.Content("~/ContactUs")">Contact Us</a> </li>
-                    @* <li>
-                            <form action="/searchresults/" method="GET" class="search-form">
-                                <input type="text" name="query" placeholder="Search..." class="search-input" />
-                                <button type="submit" class="search-button">
-                                    Search
-                                </button>
-                            </form>
-                        </li> *@
+                    <li><a href="@Url.Content("~/ContactUs")">Contact Us</a></li>
                 </ul>
             </div>
         </nav>
@@ -83,10 +107,43 @@
 
     <!-- Your Footer Code -->
     <footer class="footer">
-        <ul class="footer-links">
-            <li><a href="@Url.Content("~/")">Home</a></li>
-            <li><a href="@Url.Content("~/ContactUs")">Contact Us</a></li>
-        </ul>
-        <p>&copy; @DateTime.Now.Year MyWebsite. All rights reserved.</p>
+        <div class="footer-container">
+
+            <!-- Left Side: Vertical Navigation Hub -->
+            <div class="footer-nav-column">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-vertical-links">
+                    <li><a href="@Url.Content("~/")">Home</a></li>
+                    <li><a href="@Url.Content("~/AboutUs")">About Us</a></li>
+                    <li><a href="@Url.Content("~/Services")">Services</a></li>
+                    <li><a href="@Url.Content("~/ContactUs")">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Right Side: Anchored Contact Profile Credentials -->
+            <div class="footer-contact-column">
+                <h3 class="footer-heading">Contact Details</h3>
+                <div class="footer-personnel">
+                    <span class="footer-name">Igor Rix</span>
+                    <span class="footer-title">Director | Universal Access Consultant</span>
+                </div>
+                <div class="footer-methods">
+                    <div class="footer-method-item">
+                        <span class="method-prefix">P:</span>
+                        <a href="tel:0837030707" class="method-link">083 703 0707</a>
+                    </div>
+                    <div class="footer-method-item">
+                        <span class="method-prefix">E:</span>
+                        <a href="mailto:igor@inclusive-access.co.za" class="method-link">igor@inclusive-access.co.za</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Metadata Baseline -->
+        <div class="footer-bottom-bar">
+            <p>&copy; @DateTime.Now.Year Inclusive Access. All rights reserved.</p>
+        </div>
     </footer>
 </body>
