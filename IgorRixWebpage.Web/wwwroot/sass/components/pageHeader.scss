@@ -1,6 +1,19 @@
 /* ========================================================
    HEADER & NAVIGATION LAYOUT
    ======================================================== */
+
+   /* ========================================================
+   BRAND VARIABLES & THEMING
+   ======================================================== */
+$brand-blue-dark: #003399;
+$brand-blue-vibrant: #1143b4;
+$brand-text-dark: #003fa8;
+$logo-blue-brand: #003fa8;
+
+/* Theme adjustments */
+$bg-white: #ffffff;
+$nav-black: #000000;
+ 
 header {
     position: -webkit-sticky;
     /* Safari support */
@@ -61,6 +74,17 @@ header {
     gap: 25px;
     /* Spacing margin between individual nav items */
 
+    /* Nested Mobile Layout Adjustment */
+    @media screen and (max-width: 820px) {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        li a {
+            font-size: 16px;
+        }
+    }
+
     li {
         white-space: nowrap;
         /* Prevents layout fracturing like "About Us" breaking onto two lines */
@@ -78,17 +102,6 @@ header {
             }
         }
     }
-
-    /* Nested Mobile Layout Adjustment */
-    @media screen and (max-width: 820px) {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
-
-        li a {
-            font-size: 16px;
-        }
-    }
 }
 
 /* ========================================================
@@ -104,7 +117,6 @@ header {
     position: relative;
     padding: 10px 25px 12px 18px;
 
-    /* 1. Left Vertical Line Fragment */
     &::before {
         content: "";
         position: absolute;
@@ -115,7 +127,6 @@ header {
         background-color: $logo-blue-brand;
     }
 
-    /* 2. Short Top Horizontal Line Fragment */
     &::after {
         content: "";
         position: absolute;
