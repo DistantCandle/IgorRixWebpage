@@ -3,7 +3,7 @@ using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Routing;
 using Umbraco.Extensions;
-using IgorRixWebpage.Web.Models.NestedElements;
+// using IgorRixWebpage.Web.Models.NestedElements;
 using IgorRixWebpage.Web.Models;
 using IgorRixWebpage.Web;
 using System.Text.RegularExpressions;
@@ -45,130 +45,130 @@ namespace IgorRixWebpage.Web.Helpers
             var model = new PageContentCompositionModel();
             if (blockList == null) return model;
 
-            model.Blocks = blockList.Select(block => block.Content.ContentType.Alias switch
-            {
-                "headerComponent" => (object?)MapHeaderComponentBlock(block),
-                _ => null
-            })
-            .Where(b => b != null)
-            .ToList()!;
+            // model.Blocks = blockList.Select(block => block.Content.ContentType.Alias switch
+            // {
+            //     // "headerComponent" => (object?)MapHeaderComponentBlock(block),
+            //     _ => null
+            // })
+            // .Where(b => b != null)
+            // .ToList()!;
 
             return model;
         }
 
         // Header Component Block Method
-        public HeaderComponent? MapHeaderComponentBlock(BlockListItem block)
-        {
-            if (block?.Content == null)
-            {
-                return null;
-            }
+        // public HeaderComponent? MapHeaderComponentBlock(BlockListItem block)
+        // {
+        //     if (block?.Content == null)
+        //     {
+        //         return null;
+        //     }
 
-            var content = block.Content;
-
-
-            // ==============================
-            // LOGO
-            // ==============================
-
-            var media = content.Value<MediaWithCrops>(
-                _publishedValueFallback,
-                "image"
-            );
+        //     var content = block.Content;
 
 
-            // ==============================
-            // NAVIGATION
-            // ==============================
+        //     // ==============================
+        //     // LOGO
+        //     // ==============================
 
-            var navigation =
-                content.Value<IEnumerable<IPublishedContent>>(
-                    _publishedValueFallback,
-                    "navigation"
-                ) ?? Enumerable.Empty<IPublishedContent>();
-
-
-            // ==============================
-            // CTA
-            // ==============================
-
-            var ctaLink = content.Value<Link>(
-                _publishedValueFallback,
-                "ctaLink"
-            );
+        //     var media = content.Value<MediaWithCrops>(
+        //         _publishedValueFallback,
+        //         "image"
+        //     );
 
 
-            // ==============================
-            // HEADER
-            // ==============================
+        //     // ==============================
+        //     // NAVIGATION
+        //     // ==============================
 
-            var header = new HeaderComponent
-            {
-                Logo = media?.MediaUrl(
-                    _publishedUrlProvider
-                ),
+        //     var navigation =
+        //         content.Value<IEnumerable<IPublishedContent>>(
+        //             _publishedValueFallback,
+        //             "navigation"
+        //         ) ?? Enumerable.Empty<IPublishedContent>();
 
-                Navigation = navigation
-                    .Take(4)
-                    .Where(x => x != null && x.IsVisible())
-                    .Select(x => new HeaderNavigationItem
-                    {
-                        Name = x.Name,
-                        Url = x.Url(),
-                        Active = IsCurrentPage(x)
-                    })
-                    .ToList(),
 
-                CtaText = content.Value<string>(
-                    _publishedValueFallback,
-                    "ctaText"
-                ),
+        //     // ==============================
+        //     // CTA
+        //     // ==============================
 
-                CtaLink = ctaLink?.Url,
+        //     var ctaLink = content.Value<Link>(
+        //         _publishedValueFallback,
+        //         "ctaLink"
+        //     );
 
-                ShowCTA = content.Value<bool>(
-                    _publishedValueFallback,
-                    "showCTA"
-                ),
 
-                StickyHeader = content.Value<bool>(
-                    _publishedValueFallback,
-                    "stickyHeader"
-                )
-            };
+        //     // ==============================
+        //     // HEADER
+        //     // ==============================
 
-            return header;
-        }
-        private HeaderNavigationItem MapNavigationItem(IPublishedContent item)
-        {
-            return new HeaderNavigationItem
-            {
-                Name = item.Name,
-                Url = item.Url(),
-                Active = IsCurrentPage(item),
+        //     var header = new HeaderComponent
+        //     {
+        //         Logo = media?.MediaUrl(
+        //             _publishedUrlProvider
+        //         ),
 
-                Children = item.Children()
-                    .Where(x => x.IsVisible())
-                    .Select(MapNavigationItem)
-                    .ToList()
-            };
-        }
-        private bool IsCurrentPage(
-            IPublishedContent item)
-        {
-            var currentPage = _umbracoContextAccessor
-                .GetRequiredUmbracoContext()
-                .PublishedRequest?
-                .PublishedContent;
+        //         Navigation = navigation
+        //             .Take(4)
+        //             .Where(x => x != null && x.IsVisible())
+        //             .Select(x => new HeaderNavigationItem
+        //             {
+        //                 Name = x.Name,
+        //                 Url = x.Url(),
+        //                 Active = IsCurrentPage(x)
+        //             })
+        //             .ToList(),
 
-            if (currentPage == null)
-            {
-                return false;
-            }
+        //         CtaText = content.Value<string>(
+        //             _publishedValueFallback,
+        //             "ctaText"
+        //         ),
 
-            return item.Id == currentPage.Id ||
-                   item.IsAncestor(currentPage);
-        }
+        //         CtaLink = ctaLink?.Url,
+
+        //         ShowCTA = content.Value<bool>(
+        //             _publishedValueFallback,
+        //             "showCTA"
+        //         ),
+
+        //         StickyHeader = content.Value<bool>(
+        //             _publishedValueFallback,
+        //             "stickyHeader"
+        //         )
+        //     };
+
+        //     return header;
+        // }
+        // private HeaderNavigationItem MapNavigationItem(IPublishedContent item)
+        // {
+        //     return new HeaderNavigationItem
+        //     {
+        //         Name = item.Name,
+        //         Url = item.Url(),
+        //         Active = IsCurrentPage(item),
+
+        //         Children = item.Children()
+        //             .Where(x => x.IsVisible())
+        //             .Select(MapNavigationItem)
+        //             .ToList()
+        //     };
+        // }
+        // private bool IsCurrentPage(
+        //     IPublishedContent item)
+        // {
+        //     var currentPage = _umbracoContextAccessor
+        //         .GetRequiredUmbracoContext()
+        //         .PublishedRequest?
+        //         .PublishedContent;
+
+        //     if (currentPage == null)
+        //     {
+        //         return false;
+        //     }
+
+        //     return item.Id == currentPage.Id ||
+        //            item.IsAncestor(currentPage);
+        // }
 
     }
 }

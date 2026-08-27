@@ -10,43 +10,270 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="anonymous">
+
+    <style>
+            :root {
+                /* Extracted Brand Colors from Image */
+                --brand-blue-dark: #003399;
+                --brand-blue-vibrant: #1143b4;
+                --brand-text-dark: #003fa8;
+                --logo-blue-brand: #003fa8;
+
+                /* 🛠️ Added matching dark theme variables to prevent missing reference breaks */
+                --bg-black: #000000;
+                --bg-white: #ffffff;
+                --nav-black: #000000;
+                --nav-white: #ffffff;
+            }
+
+            body {
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: #ffffff;
+            }
+
+            /* Header Container matching the black background */
+            header {
+                position: -webkit-sticky;
+                /* Safari support */
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                /* Keeps navbar layered over page content */
+                background-color: var(--bg-white);
+                @* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); *@
+                /* Subtle depth shadow */
+            }
+
+            /* Base navigation bar wrapper wrapper */
+            .navbar {
+                width: 100%;
+                padding: 15px 0;
+            }
+
+            /* Layout container managing horizontal alignment */
+            .nav-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                /* Matches layout style: elements left-aligned */
+                align-items: center;
+                gap: 50px;
+                /* Physical spacing gap between logo and links block */
+            }
+
+            /* Brand Logo Text Matching Image Elements */
+            .nav-logo {
+                color: var(--logo-blue) !important;
+                /* Force override for standard framework link states */
+                font-size: 24px;
+                font-weight: bold;
+                text-decoration: underline;
+                /* Keeps the underline layout from your image */
+            }
+
+            /* Unordered list layout management */
+            .nav-links {
+                list-style: none;
+                /* Strips standard bullet points */
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: row;
+                /* Arranges the list item bullets horizontally */
+                align-items: center;
+                gap: 25px;
+                /* Spacing margin between individual nav items */
+            }
+
+            /* Target items wrapper inside navigation row */
+            .nav-links li {
+                white-space: nowrap;
+                /* 🛠️ Prevents layout fracturing like "About Us" breaking into two lines */
+            }
+
+            /* Individual text link formatting */
+            .nav-links li a {
+                color: var(--nav-black);
+                text-decoration: none;
+                font-size: 18px;
+                font-family: Arial, Helvetica, sans-serif;
+                transition: opacity 0.2s ease;
+            }
+
+            /* Subtle mouse interaction effect */
+            .nav-links li a:hover {
+                opacity: 0.8;
+            }
+
+            /* Base anchor wrapper */
+            .nav-logo-container {
+                text-decoration: none !important;
+                display: inline-block;
+                padding: 5px;
+            }
+
+            /* The outer framing bracket box */
+            .logo-fragment-box {
+                position: relative;
+                /* Top and Left borders make the sharp outer frame structure */
+                padding: 10px 25px 12px 18px;
+            }
+
+            /* 1. Left Vertical Line Fragment */
+            .logo-fragment-box::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 5px;
+                /* Line width matching the reference layout */
+                height: 100%;
+                /* Intentionally cut off before hitting the bottom plane */
+                background-color: var(--logo-blue-brand);
+            }
+
+            /* 2. Short Top Horizontal Line Fragment */
+            .logo-fragment-box::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 5px;
+                width: 25%;
+                /* Shortened line profile matching the target reference */
+                background-color: var(--logo-blue-brand);
+            }
+
+            /* Mixed-Typography Layout Framework */
+            .logo-main-text {
+                color: var(--logo-blue-brand);
+                font-family: Arial, Helvetica, sans-serif;
+                /* Global fallbacks */
+                font-size: 34px;
+                font-weight: bold;
+                line-height: 0.92;
+                letter-spacing: -0.5px;
+            }
+
+            /* Target elements for the distinct Roboto Slab serif caps */
+            .serif-cap {
+                font-family: 'Roboto Slab', serif;
+                font-weight: 700;
+                font-size: 38px;
+                /* Slightly scaled up to balance vertical alignment */
+                display: inline-block;
+            }
+
+            /* Tagline Container: Placed cleanly inside the open bottom-right gap */
+            .logo-subtext-line {
+                position: absolute;
+                bottom: -9px;
+                /* Vertically centers the text over the invisible bottom boundary line */
+                right: 0;
+                color: var(--logo-blue-brand);
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 16px;
+                font-weight: bold;
+                white-space: nowrap;
+            }
+
+            /* The solid horizontal line trailing directly out from the left of "no barriers" */
+            .logo-subtext-line::before {
+                content: "";
+                position: absolute;
+                left: -120%;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 120%;
+                height: 5px;
+                /* Matches the 5px framework line thickness */
+                background-color: var(--logo-blue-brand);
+            }
+
+            /* ========================================================
+           RESPONSIVE MOBILE MEDIA QUERY BREAKPOINT
+           ======================================================== */
+            @@media
+            screen and (max-width: 820px) {
+
+                /* Realign container elements vertically to provide side room */
+                .nav-container {
+                    flex-direction: column;
+                    gap: 20px;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 10px 15px;
+                }
+
+                /* Allow row elements to wrap smoothly instead of tracking off viewport */
+                .nav-links {
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                }
+
+                /* Uniformly adjust text elements slightly down for tiny displays */
+                .nav-links li a {
+                    font-size: 16px;
+                }
+            }
+    </style>
 </head>
 
 <body>
     <header>
-        @{
-            var header_blocks = Model?.PageContentCompositionModel?.Blocks;
-            var header_blockViewMap = new Dictionary<Type, string>
-                {
-                    // Add new block types here
-                    { typeof(IgorRixWebpage.Web.Models.NestedElements.HeaderComponent), "~/Views/Partials/Blocks/headerComponent.cshtml" },
-                };
-
-                if (header_blocks != null && header_blocks.Any())
-                {
-                    foreach (var block in header_blocks)
-                    {
-                        var blockType = block.GetType();
-
-                        if (header_blockViewMap.TryGetValue(blockType, out var viewPath))
-                        {
-                            @await Html.PartialAsync(viewPath, block)
-                        }
-                    }
-                }
-            @RenderBody()
-        }
+        <!--navbar start-->
+        <nav class="navbar">
+            <div class="nav-container">
+                <a class="nav-logo-container" href="@Url.Content("~/")">
+                    <div class="logo-fragment-box">
+                        <div class="logo-main-text">
+                            <div class="logo-row-1">
+                                <span class="Roboto Slab">I</span>nclusive
+                            </div>
+                            <div class="logo-row-2">
+                                Access
+                            </div>
+                        </div>
+                        <div class="logo-subtext-line">no barriers</div>
+                    </div>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="@Url.Content("~/")">Home</a></li>
+                    <li><a href="@Url.Content("~/AboutUs")">About Us</a></li>
+                    <li><a href="@Url.Content("~/Services")">Services</a></li>
+                    <li><a href="@Url.Content("~/ContactUs")">Contact Us</a> </li>
+                    @* <li>
+                            <form action="/searchresults/" method="GET" class="search-form">
+                                <input type="text" name="query" placeholder="Search..." class="search-input" />
+                                <button type="submit" class="search-button">
+                                    Search
+                                </button>
+                            </form>
+                        </li> *@
+                </ul>
+            </div>
+        </nav>
+        <!--navbar end-->
     </header>
+
+    <!--Sample Text-->
+    <p>Lorem Ipsum dolor set amet....</p>
+
     <main role='main'>
-        
-        @* @{var blocks = Model?.PageContentCompositionModel?.Blocks;
-          var blockViewMap = new Dictionary<Type, string>
+
+        @{
+            var blocks = Model?.PageContentCompositionModel?.Blocks;
+            var blockViewMap = new Dictionary<Type, string>
             {
                 // Add new block types here
-                { typeof(IgorRixWebpage.Web.Models.NestedElements.HeaderComponent), "~/Views/Partials/Blocks/headerComponent.cshtml" },
-                @* { typeof(IgorRixWebpage.Web.Models.NestedElements.AccordionContainer), "~/Views/Partials/Blocks/accordionContainer.cshtml" },
-                { typeof(IgorRixWebpage.Web.Models.NestedElements.ArticleInformationContainer), "~/Views/Partials/Blocks/articleInformationContainer.cshtml" },
-                { typeof(IgorRixWebpage.Web.Models.NestedElements.HomeArticles), "~/Views/Partials/Blocks/homeArticles.cshtml" },
             };
 
             if (blocks != null && blocks.Any())
@@ -61,12 +288,16 @@
                     }
                 }
             }
-        
 
-        @RenderBody()
-        }  *@
+            @RenderBody()
+        }
     </main>
-    <footer>
-
+    <footer class="footer">
+        <ul class="footer-links">
+            <li><a href="@Url.Content("~/")">Home</a></li>
+            <li><a href="@Url.Content("~/ContactUs")">Contact Us</a></li>
+        </ul>
+        <p>&copy; @DateTime.Now.Year MyWebsite. All rights reserved.</p>
     </footer>
+
 </body>
